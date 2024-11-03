@@ -9,7 +9,7 @@ exports.registerTeacher = async (req, res) => {
     // Check if teacher exists
     const existingTeacher = await Teacher.findOne({ email });
     if (existingTeacher)
-      return res.status(400).json({ message: "Teacher already exists" });
+      return res.status(409).json({ message: "Teacher already exists" });
 
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -37,12 +37,12 @@ exports.loginTeacher = async (req, res) => {
   const { email, password } = req.body;
   try {
     const teacher = await Teacher.findOne({ email });
-    if (!teacher) return res.status(400).json({ message: "Teacher not found" });
+    if (!teacher) return res.status(404).json({ message: "Teacher not found" });
 
     // Check password
     const isMatch = await bcrypt.compare(password, teacher.password);
     if (!isMatch)
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(401).json({ message: "Invalid credentials" });
 
     // Generate token
     const token = jwt.sign({ id: teacher._id }, process.env.JWT_SECRET, {

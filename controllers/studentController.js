@@ -10,7 +10,7 @@ exports.registerStudent = async (req, res) => {
     // Check if the student already exists
     const existingStudent = await Student.findOne({ email });
     if (existingStudent) {
-      return res.status(400).json({ message: "Student already exists" });
+      return res.status(409).json({ message: "Student already exists" });
     }
 
     // Hash the password
@@ -42,12 +42,12 @@ exports.loginStudent = async (req, res) => {
   const { email, password } = req.body;
   try {
     const student = await Student.findOne({ email });
-    if (!student) return res.status(400).json({ message: "Student not found" });
+    if (!student) return res.status(404).json({ message: "Student not found" });
 
     // Check password
     const isMatch = await bcrypt.compare(password, student.password);
     if (!isMatch)
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(401).json({ message: "Invalid credentials" });
 
     // Generate token
     const token = jwt.sign({ id: student._id }, process.env.JWT_SECRET, {
