@@ -18,7 +18,7 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve static files
-app.use("/api/teachers", teacherRoutes);
+app.use("/api/teachers", teacherRoutes); // registering individual routes
 app.use("/api/students", studentRoutes);
 app.use("/api/courses", courseRoutes);
 
