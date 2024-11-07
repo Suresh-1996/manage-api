@@ -1,4 +1,3 @@
-// controllers/studentController.js
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Student = require("../models/Student");

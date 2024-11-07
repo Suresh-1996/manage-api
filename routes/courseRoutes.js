@@ -1,4 +1,3 @@
-// routes/teacherRoutes.js
 const express = require("express");
 const {
   getAllCourses,
