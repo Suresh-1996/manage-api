@@ -1,4 +1,3 @@
-// server.js
 const express = require("express");
 const connectDB = require("./config/db");
 const teacherRoutes = require("./routes/teacherRoutes");
@@ -14,11 +13,12 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
-app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve static files
-app.use("/api/teachers", teacherRoutes); // registering individual routes
+// Serve static files
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// registering individual routes
+app.use("/api/teachers", teacherRoutes);
 app.use("/api/students", studentRoutes);
 app.use("/api/courses", courseRoutes);
 

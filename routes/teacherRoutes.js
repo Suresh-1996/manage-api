@@ -1,4 +1,3 @@
-// routes/teacherRoutes.js
 const express = require("express");
 const {
   registerTeacher,
@@ -6,7 +5,7 @@ const {
 } = require("../controllers/teacherController");
 const upload = require("../middlewares/uploadMiddleware");
 const router = express.Router();
-
+// Assigning functions to route
 router.post("/signup", upload.single("profilePicture"), registerTeacher);
 router.post("/signin", loginTeacher);
 

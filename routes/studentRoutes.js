@@ -1,4 +1,3 @@
-// routes/studentRoutes.js
 const express = require("express");
 const {
   registerStudent,
@@ -8,7 +7,7 @@ const upload = require("../middlewares/uploadMiddleware");
 
 const router = express.Router();
 
-// Register student with optional profile picture
+// Register student with  profile picture
 router.post("/signup", upload.single("profilePicture"), registerStudent);
 
 // Login student
