@@ -5,6 +5,7 @@ const studentRoutes = require("./routes/studentRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 const dotenv = require("dotenv");
 const cors = require("cors");
+
 const path = require("path");
 
 dotenv.config();
@@ -22,6 +23,6 @@ app.use("/api/teachers", teacherRoutes);
 app.use("/api/students", studentRoutes);
 app.use("/api/courses", courseRoutes);
 
-// Start server
+// Start server on port 80000
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
