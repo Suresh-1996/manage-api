@@ -28,15 +28,21 @@ JWT_SECRET - Secret key for JWT
 Other necessary configurations as per your setup
 
 Start the server:
-npm start
+node server.js
 API Endpoints
 Endpoint Method Description
-/api/auth/signup POST Signup for teachers and students
-/api/auth/login POST Login for teachers and students
+/api/teachers/signup POST Signup for teachers
+/api/teachers/signin POST Login for teachers
+/api/students/signup POST Signup for students
+/api/students/signin POST Login for students
+
+/api/courses/addCourse POST Add course by teacher
 /api/courses GET Fetch all courses
-/api/courses/teacher GET Fetch courses by teacher
-/api/courses/enroll/:id POST Enroll a student in a course
-/api/courses/unenroll/:id DELETE Unenroll a student from a course
+/api/courses/teacherId GET Fetch courses by teacher id
+/api/courses/id delete courses by teacher
+/api/courses/unenroll/:courseId DELETE Unenroll a student from a course
+/api/courses/enroll/:courseId POST Enroll a student in a course  
+/api/courses/enrolled GET Enrolled courses by student id
 
 Usage
 Run the backend server, connect with the frontend portals, and access the API via client requests.
